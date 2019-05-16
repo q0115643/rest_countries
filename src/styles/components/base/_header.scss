@@ -1,0 +1,57 @@
+.header-wrap {
+  @include overflow(hidden);
+  @include flexbox();
+  @include flex-direction(row);
+  @include justify-content(space-between);
+  @include box-shadow(0 1px 1px 0 rgba(81, 99, 120, 0.2));
+  height: 58px;
+  color: #555;
+  font-weight: 400;
+  font-size: 1rem;
+  .header-left .home-link {
+    cursor: pointer;
+    height: 100%;
+    @include flexbox();
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(center);
+    .logo-wrap {
+      @include flexbox();
+      @include align-items(center);
+      @include justify-content(center);
+      img {
+        width: 39px;
+        height: 39px;
+      }
+    }
+    .title-wrap {
+      padding-left: 12px;
+      @include link-colors(#202556, #202556, #202556);
+      font-weight: 500;
+    }
+  }
+  .header-right {
+    @include flexbox();
+    @include flex-direction(column);
+    a {
+      cursor: pointer;
+      @include flex(1);
+      @include flexbox();
+      @include flex-direction(column);
+      @include align-items(center);
+      @include justify-content(center);
+      @include link-colors(#202457, #202556, #202556);
+      @include background-gradient(to left, #261388, #202556, 50%, #261388);
+      background-repeat: no-repeat;
+      background-size: 0;
+      background-position: 0 100%;
+      &:hover {
+        background-size: 100% 6%;
+      }
+    }
+    .about-link-active {
+      cursor: pointer;
+      background-size: 100% 6%;
+    }
+  }
+}

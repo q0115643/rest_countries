@@ -1,0 +1,91 @@
+@include keyframes (slide-up) {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.add-wrap {
+    @include animation(slide-up 0.5s ease-in-out);
+    padding-top: 13px;
+    @media (min-width: 500px) {
+        padding-top: 20px;
+    }
+    @include flexbox();
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-content(center);
+    @include align-self(center);
+    width: 90%;
+    .input-list-wrap {
+        width: 100%;
+        @include flexbox();
+        @include flex-direction(row);
+        @include justify-content(space-between);
+        @include align-content(center);
+
+        .input-wrap {
+            @include flex(1);
+            width: -webkit-calc(20% - 1px);
+            width: -moz-calc(20% - 1px);
+            width: calc(20% - 1px);
+            input {
+                z-index: 1;
+                @include transition(all .3s ease-in-out);
+                padding: 0;
+                padding-left: 10px;
+                size: "1";
+                background-color: #fff;
+                border-radius: 0;
+                @include hover() {
+                    @include box-shadow(0px 1px 1px 0px rgba(0, 0, 0, 0.1));
+                    background-color: #fff;
+                }
+                border: 0.5px solid #ccc;
+                padding-left: 10px;
+                width: -webkit-calc(100% - 10px);
+                width: -moz-calc(100% - 10px);
+                width: calc(100% - 10px);;
+            }
+            .active {
+                outline: none;
+                background-color: #fff;
+                @include box-shadow(0px 1px 1px 0px rgba(0, 0, 0, 0.13));
+            }
+            ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+              color: #aaa;
+              font-weight: 400;
+              opacity: 1; /* Firefox */
+            }
+            :-ms-input-placeholder { /* Internet Explorer 10-11 */
+              color: #aaa;
+              font-weight: 400;
+            }
+            ::-ms-input-placeholder { /* Microsoft Edge */
+              color: #aaa;
+              font-weight: 400;
+            }
+            .red {
+                z-index: 2;
+                border: 0.5px solid #f49a9a;
+                @include box-shadow(0px 0px 2px 0px #f49a9a);
+                @include hover() {
+                    @include box-shadow(0px 0px 2px 0px #f49a9a);
+                }
+            }
+            .red::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+              color: #f49a9a;
+            }
+            .red:-ms-input-placeholder { /* Internet Explorer 10-11 */
+              color: #f49a9a;
+            }
+            .red::-ms-input-placeholder { /* Microsoft Edge */
+              color: #f49a9a;
+            }
+        }
+    }
+}

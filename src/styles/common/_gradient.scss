@@ -1,0 +1,5 @@
+@mixin background-gradient($angle, $start, $mid, $percent, $end) {
+    background-image: -webkit-linear-gradient($angle, $start, $mid $percent, $end);
+    background-image: -o-linear-gradient($angle, $start, $mid $percent, $end);
+    background-image: linear-gradient($angle, $start, $mid $percent, $end);
+}

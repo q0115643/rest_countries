@@ -1,0 +1,15 @@
+# dependencies
+/node_modules
+
+# production
+/dist
+
+# misc
+.idea
+.DS_Store
+
+# log
+npm-debug.log*
+
+# dummy data
+dummy.json

@@ -1,0 +1,64 @@
+.footer-wrap {
+  @include flexbox();
+  @include flex-direction(column);
+  @include justify-content(center);
+  background: #F5F5F5;
+  height: 4rem;
+  @media(min-width: 500px) { 
+    height: 5rem;
+  }
+  .footer {
+    @include flexbox();
+    @include flex-direction(row);
+    @include justify-content(space-between);
+    width: 100%;
+    .site-info {
+      @include flexbox();
+      @include flex-direction(row);
+      @include align-items(center);
+      color: #98A7B2;
+      .nickname{
+        padding-left: 5px;
+        @include link-colors(#777, #98A7B2, #98A7B2);
+      }
+      .copyright-date{
+        padding-left: 5px;
+      }
+    }
+    .author-info {
+      @include flexbox();
+      @include flex-direction(row);
+      @include justify-content(space-between);
+      width: 110px;
+      a {
+        @include flexbox();
+        @include align-items(center);
+        @include justify-content(center);
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        background-color: #fff;
+        span {
+          @include flexbox();
+          @include align-items(center);
+          @include justify-content(center);
+          svg {
+            display: block;
+            width: 20px;
+            height: 20px;
+            fill: #98A7B2;
+            .svgpath {
+              fill: #98A7B2;
+            }
+          }
+        }
+      }
+      a.mail {
+        svg {
+          width: 17px;
+          height: 17px;
+        }
+      }
+    }
+  }
+}

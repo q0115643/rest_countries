@@ -1,0 +1,21 @@
+.site {
+  @include flexbox();
+  @include flex-direction(column);
+  min-height: 100vh;  // viewport height
+}
+
+.site-content {
+  @include flex(1);
+  @include flexbox();
+  @include flex-direction(column);
+}
+
+.main-pad {
+    padding: 0 15px;
+    @media(min-width: 500px) { 
+        padding: 0 40px;
+    }
+    @media(min-width: 800px) { 
+        padding: 0 70px;
+    }
+}

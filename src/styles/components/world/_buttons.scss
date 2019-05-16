@@ -1,0 +1,121 @@
+.buttons-wrap {
+    padding-top: 10px;
+    @include flexbox();
+    @include flex-direction(row);
+    font-weight: 700;
+    color: #5b5c87;
+    font-size: 0.5rem;
+    @media (min-width: 500px) {
+        font-size: 0.7rem;
+    }
+    @media (min-width: 900px) {
+        font-size: 0.9rem;
+    }
+    .reset-wrap {
+        @include flexbox();
+        @include flex-direction(row);
+        cursor: pointer;
+        .flag-icon-wrap {
+            @include flexbox();
+            @include flex-direction(column);
+            @include justify-content(center);
+            padding-right: 5px;
+        }
+        margin-left: 5px;
+        margin-right: 24px;
+        @media (min-width: 500px) {
+            margin-left: 22px;
+            margin-right: 40px;
+            margin-top: 18px;
+            margin-bottom: 18px
+        }
+        @media (min-width: 900px) {
+            margin-left: 62px;
+            margin-right: 45px;
+        }
+        width: 40px;
+        height: 30px;
+        @media (min-width: 500px) {
+            width: 55px;
+            height: 36px;
+        }
+        .button-wrap {
+            @include flexbox();
+            @include flex-direction(column);
+            @include justify-content(center);
+            span {
+                text-align: center;
+                font-size: 0.7rem;
+                font-weight: 500;
+                @include link-colors(#202457, #202556, #202556);
+                &:hover {
+                    background-size: 0 0;
+                }
+                @media (min-width: 500px) {
+                    font-size: 0.9rem;
+                }
+            }
+        }
+    }
+    .button-list {
+        @include flexbox();
+        @include flex-direction(row);
+        width: 100%;
+        .button-wrap {
+            @include flex(1);
+            @include flexbox();
+            @include flex-direction(column);
+            @include justify-content(center);
+            @include align-items(center);
+            label {
+                height: 60%;
+                @media (min-width: 500px) {
+                    height: 45%;
+                }
+                @include flexbox();
+                @include flex-direction(column);
+                @include align-items(center);
+                @include justify-content(center);
+            }
+            input {
+                display:none;
+                + span {
+                    @include flex(1);
+                    @include flexbox();
+                    @include flex-direction(column);
+                    @include justify-content(center);
+                    @include align-items(center);
+                    text-align: center;
+                    font-size: 0.7rem;
+                    font-weight: 500;
+                    cursor: pointer;
+                    @include link-colors(#202457, #202556, #202556);
+                    @include background-gradient(to left, transparent, transparent, 50%, transparent);
+                    background-repeat: no-repeat;
+                    background-size: 100% 10%;
+                    background-position: 0 100%;
+                    height: 30px;
+                    width: 40px;
+                    @include transition(all .4s ease-in);
+                    @media (min-width: 500px) {
+                        width: 50px;
+                        height: 40px;
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+            .up {
+                + span {
+                    @include background-gradient(to left, #261388, #202556, 50%, #261388);
+                    background-position: 0 0;
+                }
+            }
+            .down {
+                + span {
+                    @include background-gradient(to left, #261388, #202556, 50%, #261388);
+                    background-position: 0 100%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+.home-wrapper {
+    @include flexbox();
+    @include flex-direction(column);
+    .top-wrapper {
+        @include flexbox();
+        @include flex-direction(column);
+        @include background-gradient(to left, #bdb1fb, #9aaafe, 61%, #638dfc);
+        height: 100px;
+        @media(min-width: 500px) { 
+            height: 200px;
+        }
+        .description-wrap {
+            @include flex(1);
+            @include flexbox();
+            @include flex-direction(column);
+            @include justify-content(center);
+            @media(min-width: 500px) { 
+                padding-left: 80px;
+            }
+            @media(min-width: 800px) { 
+                padding-left: 170px;
+            }
+            .description {
+                color: #fff;
+                font-size: 1.2rem;
+                @media(min-width: 500px) { 
+                    font-size: 2.3rem;
+                }
+                line-height: 1.5;
+            }
+        }
+    }
+    .main {
+        @include flexbox();
+        @include flex-direction(column);
+    }
+}

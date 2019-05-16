@@ -1,0 +1,13 @@
+@mixin link-colors($plain, $hover, $active) {
+  color: $plain;
+  text-decoration: none;
+  @include plain() {
+    color: $plain;
+  };
+  @include hover() {
+    color: $hover;
+  };
+  @include active() {
+    color: $active;
+  };
+}
