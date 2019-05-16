@@ -1,7 +1,12 @@
 ## REST Countries
 
+국가 정보를 받아와 리스팅해주는 간단한 리액트 페이지입니다.
+
 ![Imgur](https://i.imgur.com/zbFo03O.png)
 
+## Data
+
+https://restcountries.eu/rest/v2/all?fields=alpha2Code;capital;name;region;callingCodes
 
 ## 구성
 
