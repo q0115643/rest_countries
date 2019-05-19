@@ -54,26 +54,24 @@ function compare(origA, origB, a, b, rule, direction) {
     }
     if (origA.callingCodes[0] === '1 340' && b && rule === 'call') {
         return 1;
-    } else if (origB.callingCodes[0] === '1 340' && a && rule === 'call') {
+    } if (origB.callingCodes[0] === '1 340' && a && rule === 'call') {
         return -1;
     }
     if (!a && !b) {
         return 0;
-    } else if (!a) {
+    } if (!a) {
         return 1;
-    } else if (!b) {
+    } if (!b) {
         return -1;
-    } else if (a > b) {
-        return 1*direction;
-    } else if (b > a) {
-        return -1*direction;
-    } else {
-        if (rule === 'name') {
-            return 0;
-        } else {
-            return compare(origA, origB, origA.name, origB.name, 'name', direction);
-        }
+    } if (a > b) {
+        return 1 * direction;
+    } if (b > a) {
+        return -1 * direction;
     }
+    if (rule === 'name') {
+        return 0;
+    }
+    return compare(origA, origB, origA.name, origB.name, 'name', direction);
 }
 
 
@@ -117,17 +115,13 @@ export function reducer(state: State = initialState, action: Action) {
 
         case ActionTypes.DEL_COUNTRY: {
             const alpha2Code = action.payload.alpha2Code.toUpperCase();
-            const countries = state.countries.filter( (country) => {
-                return country.alpha2Code.toUpperCase() !== alpha2Code;
-            });
-            const foundCountries = state.foundCountries.filter( (country) => {
-                return country.alpha2Code.toUpperCase() !== alpha2Code;
-            });
+            const countries = state.countries.filter(country => country.alpha2Code.toUpperCase() !== alpha2Code);
+            const foundCountries = state.foundCountries.filter(country => country.alpha2Code.toUpperCase() !== alpha2Code);
 
             return {
                 ...state,
-                countries: countries,
-                foundCountries: foundCountries,
+                countries,
+                foundCountries,
                 visibleCountries: foundCountries.slice(0, state.countryNumber),
             };
         }
@@ -144,11 +138,11 @@ export function reducer(state: State = initialState, action: Action) {
             const countries: Country[] = [];
             for (let i = 0; i < state.countries.length; i++) {
                 const country = state.countries[i];
-                if (country.name.toUpperCase().includes(keyword) ||
-          country.alpha2Code.toUpperCase().includes(keyword) ||
-          country.callingCodes[0].toUpperCase().includes(keyword) ||
-          country.capital.toUpperCase().includes(keyword) ||
-          country.region.toUpperCase().includes(keyword)) {
+                if (country.name.toUpperCase().includes(keyword)
+          || country.alpha2Code.toUpperCase().includes(keyword)
+          || country.callingCodes[0].toUpperCase().includes(keyword)
+          || country.capital.toUpperCase().includes(keyword)
+          || country.region.toUpperCase().includes(keyword)) {
                     countries.push(country);
                 }
             }
@@ -169,25 +163,15 @@ export function reducer(state: State = initialState, action: Action) {
             const rule = action.payload.rule || 'name';
             const countriesCopy = state.foundCountries.slice();
             if (rule === 'name') {
-                countriesCopy.sort((a, b) => {
-                    return compare(a, b, a.name, b.name, rule, nextDirection);
-                });
-            } else if (rule == 'capital') {
-                countriesCopy.sort((a, b) => {
-                    return compare(a, b, a.capital, b.capital, rule, nextDirection);
-                });
-            } else if (rule == 'region') {
-                countriesCopy.sort((a, b) => {
-                    return compare(a, b, a.region, b.region, rule, nextDirection);
-                });
-            } else if (rule == 'call') {
-                countriesCopy.sort((a, b) => {
-                    return compare(a, b, parseInt(a.callingCodes[0]), parseInt(b.callingCodes[0]), rule, nextDirection);
-                });
-            } else if (rule == 'alpha2') {
-                countriesCopy.sort((a, b) => {
-                    return compare(a, b, a.alpha2Code, b.alpha2Code, rule, nextDirection);
-                });
+                countriesCopy.sort((a, b) => compare(a, b, a.name, b.name, rule, nextDirection));
+            } else if (rule === 'capital') {
+                countriesCopy.sort((a, b) => compare(a, b, a.capital, b.capital, rule, nextDirection));
+            } else if (rule === 'region') {
+                countriesCopy.sort((a, b) => compare(a, b, a.region, b.region, rule, nextDirection));
+            } else if (rule === 'call') {
+                countriesCopy.sort((a, b) => compare(a, b, parseInt(a.callingCodes[0], 10), parseInt(b.callingCodes[0], 10), rule, nextDirection));
+            } else if (rule === 'alpha2') {
+                countriesCopy.sort((a, b) => compare(a, b, a.alpha2Code, b.alpha2Code, rule, nextDirection));
             }
 
             return {
@@ -203,18 +187,18 @@ export function reducer(state: State = initialState, action: Action) {
             let addOpen = true;
             const countries: Country[] = state.countries.slice();
             const foundCountries: Country[] = state.foundCountries.slice();
-            let inputCountry = state.inputCountry;
-            let inputCapital = state.inputCapital;
-            let inputRegion = state.inputRegion;
-            let inputAlpha2 = state.inputAlpha2;
-            let inputCallingCodes = state.inputCallingCodes;
+            let { inputCountry } = state;
+            let { inputCapital } = state;
+            let { inputRegion } = state;
+            let { inputAlpha2 } = state;
+            let { inputCallingCodes } = state;
             let redCountry = '';
             let redCapital = '';
             let redRegion = '';
             let redAlpha2 = '';
             let redCallingCodes = '';
-            if (state.inputCountry && state.inputCapital &&
-        state.inputRegion && state.inputAlpha2 && state.inputCallingCodes) {
+            if (state.inputCountry && state.inputCapital
+        && state.inputRegion && state.inputAlpha2 && state.inputCallingCodes) {
                 let findDuplicates = false;
                 for (let i = 0; i < countries.length; i++) {
                     if (countries[i].name === state.inputCountry) {
@@ -251,20 +235,20 @@ export function reducer(state: State = initialState, action: Action) {
 
             return {
                 ...state,
-                countries: countries,
-                foundCountries: foundCountries,
+                countries,
+                foundCountries,
                 visibleCountries: foundCountries.slice(0, state.countryNumber),
-                addOpen: addOpen,
-                inputCountry: inputCountry,
-                inputCapital: inputCapital,
-                inputRegion: inputRegion,
-                inputAlpha2: inputAlpha2,
-                inputCallingCodes: inputCallingCodes,
-                redCountry: redCountry,
-                redCapital: redCapital,
-                redRegion: redRegion,
-                redAlpha2: redAlpha2,
-                redCallingCodes: redCallingCodes,
+                addOpen,
+                inputCountry,
+                inputCapital,
+                inputRegion,
+                inputAlpha2,
+                inputCallingCodes,
+                redCountry,
+                redCapital,
+                redRegion,
+                redAlpha2,
+                redCallingCodes,
             };
         }
 

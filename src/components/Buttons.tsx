@@ -20,7 +20,6 @@ interface ButtonState {
     region: string;
     alpha2: string;
     call: string;
-    reset: string;
 }
 
 class Buttons extends React.Component<Props, ButtonState> {
@@ -33,7 +32,6 @@ class Buttons extends React.Component<Props, ButtonState> {
             region: 'button',
             alpha2: 'button',
             call: 'button',
-            reset: 'button',
         };
 
         this.resetClick = this.resetClick.bind(this);
@@ -166,7 +164,7 @@ class Buttons extends React.Component<Props, ButtonState> {
             <div className="buttons-wrap">
                 <div className="reset-wrap" onClick={ this.resetClick }>
                     <div className="flag-icon-wrap">
-                        <FaRegFlag className="icon flag"/>
+                        <FaRegFlag className="icon flag" />
                     </div>
                     <div className="button-wrap">
                         <span className="reset">

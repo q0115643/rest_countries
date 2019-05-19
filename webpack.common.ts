@@ -3,14 +3,12 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 
-const isProd = (mode: string): boolean => {
-    return mode === 'production';
-};
+const isProd = (mode: string): boolean => mode === 'production';
 
 
 function buildConfig(mode: string, options: any): webpack.Configuration {
     const config: webpack.Configuration = {
-        mode: mode,
+        mode,
         entry: './src/index.tsx',
         output: {
             filename: 'bundle.js',
@@ -29,14 +27,14 @@ function buildConfig(mode: string, options: any): webpack.Configuration {
 
         module: {
             rules: [
-                {test: /\.(ts|js)x?$/, exclude: /node_modules/, loader: 'babel-loader'},
+                { test: /\.(ts|js)x?$/, exclude: /node_modules/, loader: 'babel-loader' },
 
                 {
                     test: /\.ya?ml$/,
                     use: [
-                        {loader: 'json-loader'},
-                        {loader: 'yaml-loader'},
-                        {loader: 'yaml-lint-loader'},
+                        { loader: 'json-loader' },
+                        { loader: 'yaml-loader' },
+                        { loader: 'yaml-lint-loader' },
                     ],
                 },
 
@@ -74,7 +72,7 @@ function buildConfig(mode: string, options: any): webpack.Configuration {
         // This is important because it allows us to avoid bundling all of our
         // dependencies, which allows browsers to cache those libraries between builds.
         externals: {
-            'react': 'React',
+            react: 'React',
             'react-dom': 'ReactDOM',
         },
 
@@ -102,8 +100,7 @@ function buildConfig(mode: string, options: any): webpack.Configuration {
             host: options.devServer.host,
             port: options.devServer.port,
         };
-        config.module.rules =
-            (config.module.rules || []).concat(options.rules || []);
+        config.module.rules = (config.module.rules || []).concat(options.rules || []);
     }
 
     return config;

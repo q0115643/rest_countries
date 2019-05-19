@@ -39,7 +39,7 @@ interface BoxState {
 class Add extends React.Component<Props, BoxState> {
     constructor(props: Props) {
         super(props);
-        this.state= {
+        this.state = {
             countrySearchBox: 'searchbox',
             capitalSearchBox: 'searchbox',
             regionSearchBox: 'searchbox',
@@ -54,23 +54,27 @@ class Add extends React.Component<Props, BoxState> {
     }
 
     changeCountryValue(event) {
-        const value = event.target.value;
+        const { value } = event.target;
         this.props.changeCountryInput(value);
     }
+
     changeCapitalValue(event) {
-        const value = event.target.value;
+        const { value } = event.target;
         this.props.changeCapInput(value);
     }
+
     changeRegionValue(event) {
-        const value = event.target.value;
+        const { value } = event.target;
         this.props.changeRegionInput(value);
     }
+
     changeAlpha2Value(event) {
-        const value = event.target.value;
+        const { value } = event.target;
         this.props.changeAlpha2Input(value);
     }
+
     changeCallValue(event) {
-        const value = event.target.value;
+        const { value } = event.target;
         this.props.changeCallInput(value);
     }
 
@@ -82,55 +86,55 @@ class Add extends React.Component<Props, BoxState> {
                         <input
                             type="text"
                             className={`${this.state.countrySearchBox} ${this.props.redCountry}`}
-                            value={this.props.inputCountry}
+                            value={ this.props.inputCountry }
                             placeholder="country"
-                            onChange={this.changeCountryValue}
-                            onFocus={() => this.setState({countrySearchBox: `searchbox active`})}
-                            onBlur={() => this.setState({countrySearchBox: `searchbox`})}
+                            onChange={ this.changeCountryValue }
+                            onFocus={ () => this.setState({ countrySearchBox: 'searchbox active' }) }
+                            onBlur={ () => this.setState({ countrySearchBox: 'searchbox' }) }
                         />
                     </div>
                     <div className="input-wrap">
                         <input
                             type="text"
                             className={`${this.state.capitalSearchBox} ${this.props.redCapital}`}
-                            value={this.props.inputCapital}
+                            value={ this.props.inputCapital }
                             placeholder="capital"
-                            onChange={this.changeCapitalValue}
-                            onFocus={() => this.setState({capitalSearchBox: `searchbox active`})}
-                            onBlur={() => this.setState({capitalSearchBox: `searchbox`})}
+                            onChange={ this.changeCapitalValue }
+                            onFocus={ () => this.setState({ capitalSearchBox: 'searchbox active' }) }
+                            onBlur={ () => this.setState({ capitalSearchBox: 'searchbox' }) }
                         />
                     </div>
                     <div className="input-wrap">
                         <input
                             type="text"
                             className={`${this.state.regionSearchBox} ${this.props.redRegion}`}
-                            value={this.props.inputRegion}
+                            value={ this.props.inputRegion }
                             placeholder="region"
-                            onChange={this.changeRegionValue}
-                            onFocus={() => this.setState({regionSearchBox: `searchbox active`})}
-                            onBlur={() => this.setState({regionSearchBox: `searchbox`})}
+                            onChange={ this.changeRegionValue }
+                            onFocus={ () => this.setState({ regionSearchBox: 'searchbox active' }) }
+                            onBlur={ () => this.setState({ regionSearchBox: 'searchbox' }) }
                         />
                     </div>
                     <div className="input-wrap">
                         <input
                             type="text"
                             className={`${this.state.alphaSearchBox} ${this.props.redAlpha2}`}
-                            value={this.props.inputAlpha2}
+                            value={ this.props.inputAlpha2 }
                             placeholder="alpha2"
-                            onChange={this.changeAlpha2Value}
-                            onFocus={() => this.setState({alphaSearchBox: `searchbox active`})}
-                            onBlur={() => this.setState({alphaSearchBox: `searchbox`})}
+                            onChange={ this.changeAlpha2Value }
+                            onFocus={ () => this.setState({ alphaSearchBox: 'searchbox active' }) }
+                            onBlur={ () => this.setState({ alphaSearchBox: 'searchbox' }) }
                         />
                     </div>
                     <div className="input-wrap">
                         <input
                             type="text"
                             className={`${this.state.callSearchBox} ${this.props.redCallingCodes}`}
-                            value={this.props.inputCallingCodes}
+                            value={ this.props.inputCallingCodes }
                             placeholder="call"
-                            onChange={this.changeCallValue}
-                            onFocus={() => this.setState({callSearchBox: `searchbox active`})}
-                            onBlur={() => this.setState({callSearchBox: `searchbox`})}
+                            onChange={ this.changeCallValue }
+                            onFocus={ () => this.setState({ callSearchBox: 'searchbox active' }) }
+                            onBlur={ () => this.setState({ callSearchBox: 'searchbox' }) }
                         />
                     </div>
                 </div>

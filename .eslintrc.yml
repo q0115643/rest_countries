@@ -2,7 +2,7 @@ env:
   browser: true
   es6: true
 extends:
-  - google
+  - airbnb
   - plugin:react/recommended
   - plugin:@typescript-eslint/recommended
 globals:
@@ -18,12 +18,26 @@ plugins:
 rules:
   # Severity should be one of the following: 0 = off, 1 = warn, 2 = error
   max-len: 0
-  linebreak-style: 0
+  semi: 0
   no-var: 2
+  no-plusplus: ["error", { "allowForLoopAfterthoughts": true }]
   prefer-const: 1
   no-unused-vars: 1
   require-jsdoc: 0
-  object-curly-spacing: 0
+  no-param-reassign: 0
+  no-underscore-dangle: 0
+  object-curly-newline: 0
+  import/no-unresolved: 0
+  import/no-extraneous-dependencies: 0
+  react/jsx-indent: 0
+  react/jsx-indent-props: 0
+  react/jsx-curly-spacing: 0
+  react/jsx-filename-extension: 0
+  react/destructuring-assignment: 0
+  jsx-a11y/label-has-for: 0
+  jsx-a11y/label-has-associated-control: 0
+  jsx-a11y/click-events-have-key-events: 0
+  jsx-a11y/no-static-element-interactions: 0
   '@typescript-eslint/no-explicit-any': 0
   '@typescript-eslint/explicit-function-return-type': 0
   '@typescript-eslint/explicit-member-accessibility': 0

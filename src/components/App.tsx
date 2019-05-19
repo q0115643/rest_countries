@@ -6,6 +6,7 @@ import '../styles/main.scss';
 import site from 'config.yml';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
+
 const Home = lazy(() => import('components/Home'));
 const About = lazy(() => import('components/About'));
 const Page404 = lazy(() => import('components/Page404'));
@@ -31,17 +32,17 @@ class App extends React.Component<{}, State> {
                     />
                 </Helmet>
                 <div className="site">
-                    <Header/>
+                    <Header />
                     <main className="site-content">
                         <Suspense fallback={ <div>Loading...</div> }>
                             <Switch>
-                                <Route exact path="/" component={ Home }/>
-                                <Route path="/about" component={ About }/>
+                                <Route exact path="/" component={ Home } />
+                                <Route path="/about" component={ About } />
                                 <Route component={ Page404 } />
                             </Switch>
                         </Suspense>
                     </main>
-                    <Footer/>
+                    <Footer />
                 </div>
             </div>
         );

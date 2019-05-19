@@ -7,7 +7,7 @@ const config = buildConfig('development', {
         port: 8080,
     },
     rules: [
-        {enforce: 'pre', test: /\.js$/, loader: 'source-map-loader'},
+        { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
     ],
 });
 

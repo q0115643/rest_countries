@@ -17,17 +17,16 @@ interface Props {
 interface SearchState {
     label: string;
     searchBox: string;
-    addButton: string;
 }
 
 class Search extends React.Component<Props, SearchState> {
-    private _debouncedSearch;
+    private readonly _debouncedSearch;
+
     constructor(props) {
         super(props);
-        this.state= {
+        this.state = {
             label: 'search for',
             searchBox: 'searchbox',
-            addButton: 'button',
         };
         this.changeValue = this.changeValue.bind(this);
         this.addCountry = this.addCountry.bind(this);
@@ -36,7 +35,7 @@ class Search extends React.Component<Props, SearchState> {
     }
 
     changeValue(event) {
-        const value = event.target.value;
+        const { value } = event.target;
         this.props.setKeyword(value);
         this._debouncedSearch();
     }
@@ -46,7 +45,7 @@ class Search extends React.Component<Props, SearchState> {
     }
 
     checkKey(e) {
-        if (e.key==='Enter') {
+        if (e.key === 'Enter') {
             this.props.searchWorld();
         }
     }
@@ -55,20 +54,20 @@ class Search extends React.Component<Props, SearchState> {
         return (
             <div className="search-wrap">
                 <div className="add-button">
-                    <span className="add" onClick={this.addCountry}>
+                    <span className="add" onClick={ this.addCountry }>
                         add
                     </span>
                 </div>
                 <div className="input-wrap">
                     <input
                         type="text"
-                        className={this.state.searchBox}
-                        value={this.props.keyword}
-                        placeholder={this.state.label}
-                        onChange={this.changeValue}
-                        onKeyPress={this.checkKey}
-                        onFocus={() => this.setState({searchBox: 'searchbox active'})}
-                        onBlur={() => this.setState({searchBox: 'searchbox'})}
+                        className={ this.state.searchBox }
+                        value={ this.props.keyword }
+                        placeholder={ this.state.label }
+                        onChange={ this.changeValue }
+                        onKeyPress={ this.checkKey }
+                        onFocus={ () => this.setState({ searchBox: 'searchbox active' }) }
+                        onBlur={ () => this.setState({ searchBox: 'searchbox' }) }
                     />
                 </div>
             </div>

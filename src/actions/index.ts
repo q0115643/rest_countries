@@ -52,7 +52,7 @@ export function requestCountries(): RequestCountriesAction {
 export function getCountries(countries: Country[]): GetCountriesAction {
     return {
         type: ActionTypes.GET_COUNTRIES,
-        payload: {countries},
+        payload: { countries },
     };
 }
 
@@ -66,7 +66,7 @@ export function addCountry(): AddCountryAction {
 export function delCountry(alpha2Code: string): DelCountryAction {
     return {
         type: ActionTypes.DEL_COUNTRY,
-        payload: {alpha2Code},
+        payload: { alpha2Code },
     };
 }
 
@@ -80,70 +80,66 @@ export function searchCountries(): SearchCountriesAction {
 export function setKeyword(keyword: string): SetKeywordAction {
     return {
         type: ActionTypes.SET_KEYWORD,
-        payload: {keyword},
+        payload: { keyword },
     };
 }
 
 export function sortCountries(rule: string): SortCountriesAction {
     return {
         type: ActionTypes.SORT_COUNTRIES,
-        payload: {rule},
+        payload: { rule },
     };
 }
 
-export function setInputCountry( inputCountry: string ): SetInputCountryAction {
+export function setInputCountry(inputCountry: string): SetInputCountryAction {
     return {
         type: ActionTypes.SET_INPUT_COUNTRY,
-        payload: {inputCountry},
+        payload: { inputCountry },
     };
 }
 
-export function setInputCapital( inputCapital: string ): SetInputCapAction {
+export function setInputCapital(inputCapital: string): SetInputCapAction {
     return {
         type: ActionTypes.SET_INPUT_CAPITAL,
-        payload: {inputCapital},
+        payload: { inputCapital },
     };
 }
 
-export function setInputRegion( inputRegion: string ): SetInputRegionAction {
+export function setInputRegion(inputRegion: string): SetInputRegionAction {
     return {
         type: ActionTypes.SET_INPUT_REGION,
-        payload: {inputRegion},
+        payload: { inputRegion },
     };
 }
 
-export function setInputAlpha2( inputAlpha2: string ): SetInputAlphaAction {
+export function setInputAlpha2(inputAlpha2: string): SetInputAlphaAction {
     return {
         type: ActionTypes.SET_INPUT_ALPHA2,
-        payload: {inputAlpha2},
+        payload: { inputAlpha2 },
     };
 }
 
-export function setInputCallingCode( inputCallingCodes: string ): SetInputCallAction {
+export function setInputCallingCode(inputCallingCodes: string): SetInputCallAction {
     return {
         type: ActionTypes.SET_INPUT_CALLINGCODES,
-        payload: {inputCallingCodes},
+        payload: { inputCallingCodes },
     };
 }
 
-export function addCountryNumber( ): AddCountryNumberAction {
+export function addCountryNumber(): AddCountryNumberAction {
     return {
         type: ActionTypes.ADD_COUNTRY_NUMBER,
         payload: { },
     };
 }
 
-const getData = () => {
-    return fetch(site.dataUrl, {method: 'GET'})
-        .then((response) => response.json());
-};
+const getData = () => fetch(site.dataUrl, { method: 'GET' })
+    .then(response => response.json());
 
 export const fetchData = () => (dispatch) => {
     dispatch(requestCountries());
     return getData().then((data) => {
-        setTimeout(() => {
-            return dispatch(getCountries(data));
-        }, 100);
+        setTimeout(() => dispatch(getCountries(data)), 100);
     });
 };
 

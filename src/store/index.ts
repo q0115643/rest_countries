@@ -9,7 +9,7 @@ const middlewares = [ReduxThunk, logger];
 const store = createStore<State, any, any, any>(
     reducer,
     initialState,
-    applyMiddleware(...middlewares)
+    applyMiddleware(...middlewares),
 );
 
 

@@ -5,7 +5,7 @@ import App from 'components/App';
 
 const Root: React.FC<{}> = () => (
     <BrowserRouter>
-        <App/>
+        <App />
     </BrowserRouter>
 );
 

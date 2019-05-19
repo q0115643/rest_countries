@@ -21,34 +21,15 @@ interface Props {
 
 class List extends React.Component<Props, {}> {
     private readonly _throttledLoad;
+
     constructor(props) {
         super(props);
         this.removeCountry = this.removeCountry.bind(this);
         this.handleScroll = this.handleScroll.bind(this);
         this._throttledLoad = throttle(
-            this.props.addNumberByScroll
-            , 1000, {trailing: false});
-    }
-
-    handleScroll() {
-        const windowHeight = 'innerHeight' in window ? window.innerHeight : document.documentElement.offsetHeight;
-        const body = document.body;
-        const html = document.documentElement;
-        const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
-        const windowBottom = Math.round(windowHeight + window.pageYOffset);
-        if (windowBottom >= docHeight) {
-            setTimeout(
-                this._throttledLoad
-                , 500);
-        }
-    };
-
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
-    }
-
-    removeCountry(alpha2Code: string) {
-        this.props.deleteCountry(alpha2Code);
+            this.props.addNumberByScroll,
+            1000, { trailing: false },
+        );
     }
 
     componentDidMount() {
@@ -56,58 +37,78 @@ class List extends React.Component<Props, {}> {
         this.props.requestWorld();
     }
 
-    renderCountries() {
-        return this.props.countries.map((country) => {
-            return (
-                <li className="country-wrap" key={country.alpha2Code}>
-                    <div className="flag-wrap">
-                        <div className="image">
-                            <LazyLoad>
-                                <img className="flag" src={`https://www.countryflags.io/${country.alpha2Code}/flat/64.png`}/>
-                            </LazyLoad>
-                        </div>
-                    </div>
-                    <div className="fields">
-                        <div className="name field">
-                            <span>
-                                { country.name || 'Not Found' }
-                            </span>
-                        </div>
-                        <div className="capital field">
-                            <span>
-                                { country.capital || 'Not Found' }
-                            </span>
-                        </div>
-                        <div className="region field">
-                            <span>
-                                { country.region || 'Not Found' }
-                            </span>
-                        </div>
-                        <div className="alpha2Code field">
-                            <span>
-                                { country.alpha2Code || 'Not Found' }
-                            </span>
-                        </div>
-                        <div className="callingCodes field">
-                            <span>
-                                { country.callingCodes[0] || 'Not Found' }
-                            </span>
-                        </div>
-                        <div className="delete field">
-                            <div className="gun-wrap" onClick={ () => this.removeCountry(country.alpha2Code) }>
-                                <SVG className="icon gun" src={ gun }/>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    handleScroll() {
+        const windowHeight = 'innerHeight' in window ? window.innerHeight : document.documentElement.offsetHeight;
+        const { body } = document;
+        const html = document.documentElement;
+        const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+        const windowBottom = Math.round(windowHeight + window.pageYOffset);
+        if (windowBottom >= docHeight) {
+            setTimeout(
+                this._throttledLoad,
+                500,
             );
-        });
+        }
+    }
+
+    removeCountry(alpha2Code: string) {
+        this.props.deleteCountry(alpha2Code);
+    }
+
+    renderCountries() {
+        return this.props.countries.map(country => (
+            <li className="country-wrap" key={country.alpha2Code}>
+                <div className="flag-wrap">
+                    <div className="image">
+                        <LazyLoad>
+                            <img className="flag" alt="flag" src={`https://www.countryflags.io/${country.alpha2Code}/flat/64.png`} />
+                        </LazyLoad>
+                    </div>
+                </div>
+                <div className="fields">
+                    <div className="name field">
+                        <span>
+                            { country.name || 'Not Found' }
+                        </span>
+                    </div>
+                    <div className="capital field">
+                        <span>
+                            { country.capital || 'Not Found' }
+                        </span>
+                    </div>
+                    <div className="region field">
+                        <span>
+                            { country.region || 'Not Found' }
+                        </span>
+                    </div>
+                    <div className="alpha2Code field">
+                        <span>
+                            { country.alpha2Code || 'Not Found' }
+                        </span>
+                    </div>
+                    <div className="callingCodes field">
+                        <span>
+                            { country.callingCodes[0] || 'Not Found' }
+                        </span>
+                    </div>
+                    <div className="delete field">
+                        <div className="gun-wrap" onClick={ () => this.removeCountry(country.alpha2Code) }>
+                            <SVG className="icon gun" src={ gun } />
+                        </div>
+                    </div>
+                </div>
+            </li>
+        ));
     }
 
     render() {
         return (
             <div className="list-wrapper">
-                <Buttons/>
+                <Buttons />
                 <ul className="country-list">
                     { this.renderCountries() }
                 </ul>
