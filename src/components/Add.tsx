@@ -37,7 +37,7 @@ interface BoxState {
 }
 
 class Add extends React.Component<Props, BoxState> {
-    constructor(props) {
+    constructor(props: Props) {
         super(props);
         this.state= {
             countrySearchBox: 'searchbox',

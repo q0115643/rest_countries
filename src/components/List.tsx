@@ -20,16 +20,17 @@ interface Props {
 }
 
 class List extends React.Component<Props, {}> {
-    private _throttledLoad;
+    private readonly _throttledLoad;
     constructor(props) {
         super(props);
         this.removeCountry = this.removeCountry.bind(this);
+        this.handleScroll = this.handleScroll.bind(this);
         this._throttledLoad = throttle(
             this.props.addNumberByScroll
             , 1000, {trailing: false});
     }
 
-    handleScroll = (event) => {
+    handleScroll() {
         const windowHeight = 'innerHeight' in window ? window.innerHeight : document.documentElement.offsetHeight;
         const body = document.body;
         const html = document.documentElement;
@@ -40,7 +41,7 @@ class List extends React.Component<Props, {}> {
                 this._throttledLoad
                 , 500);
         }
-    }
+    };
 
     componentWillMount() {
         window.addEventListener('scroll', this.handleScroll);

@@ -19,7 +19,13 @@ rules:
   # Severity should be one of the following: 0 = off, 1 = warn, 2 = error
   max-len: 0
   linebreak-style: 0
-  '@typescript-eslint/no-explicit-any': 0,
   no-var: 2
   prefer-const: 1
   no-unused-vars: 1
+  require-jsdoc: 0
+  '@typescript-eslint/no-explicit-any': 0
+  '@typescript-eslint/explicit-function-return-type': 0
+  '@typescript-eslint/explicit-member-accessibility': 0
+settings:
+  react:
+    version: detect

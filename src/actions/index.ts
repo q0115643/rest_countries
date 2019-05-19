@@ -8,7 +8,6 @@ import site from 'config.yml';
 export enum ActionTypes {
   REQUEST_COUNTRIES = 'REQUEST_COUNTRIES',
   GET_COUNTRIES = 'GET_COUNTRIES',
-  // SET_COUNTRIES = 'SET_COUNTRIES',
   ADD_COUNTRY = 'ADD_COUNTRY',
   DEL_COUNTRY = 'DEL_COUNTRY',
   SET_KEYWORD = 'SET_KEYWORD',
@@ -20,26 +19,25 @@ export enum ActionTypes {
   SET_INPUT_ALPHA2 = 'SET_INPUT_ALPHA2',
   SET_INPUT_CALLINGCODES = 'SET_INPUT_CALLINGCODES',
   ADD_COUNTRY_NUMBER = 'ADD_COUNTRY_NUMBER',
-};
+}
 
 /*
  * Define return types of our actions 
  * Every action returns a type and a payload
  */
-export interface RequestCountriesAction { type: ActionTypes.REQUEST_COUNTRIES, payload: { } };
-export interface GetCountriesAction { type: ActionTypes.GET_COUNTRIES, payload: { countries: Array<Country> } };
-// export interface SetCountriesAction { type: ActionTypes.SET_COUNTRIES, payload: { countries: Array<Country> } };
-export interface AddCountryAction { type: ActionTypes.ADD_COUNTRY, payload: { } };
-export interface DelCountryAction { type: ActionTypes.DEL_COUNTRY, payload: { alpha2Code: string } };
-export interface SearchCountriesAction { type: ActionTypes.SEARCH_COUNTRIES, payload: { } };
-export interface SetKeywordAction { type: ActionTypes.SET_KEYWORD, payload: { keyword: string } };
-export interface SortCountriesAction { type: ActionTypes.SORT_COUNTRIES, payload: { rule: string } };
-export interface SetInputCountryAction { type: ActionTypes.SET_INPUT_COUNTRY, payload: { inputCountry: string } };
-export interface SetInputCapAction { type: ActionTypes.SET_INPUT_CAPITAL, payload: { inputCapital: string } };
-export interface SetInputRegionAction { type: ActionTypes.SET_INPUT_REGION, payload: { inputRegion: string } };
-export interface SetInputAlphaAction { type: ActionTypes.SET_INPUT_ALPHA2, payload: { inputAlpha2: string } };
-export interface SetInputCallAction { type: ActionTypes.SET_INPUT_CALLINGCODES, payload: { inputCallingCodes: string } };
-export interface AddCountryNumberAction { type: ActionTypes.ADD_COUNTRY_NUMBER, payload: { } };
+export interface RequestCountriesAction { type: ActionTypes.REQUEST_COUNTRIES, payload: { } }
+export interface GetCountriesAction { type: ActionTypes.GET_COUNTRIES, payload: { countries: Array<Country> } }
+export interface AddCountryAction { type: ActionTypes.ADD_COUNTRY, payload: { } }
+export interface DelCountryAction { type: ActionTypes.DEL_COUNTRY, payload: { alpha2Code: string } }
+export interface SearchCountriesAction { type: ActionTypes.SEARCH_COUNTRIES, payload: { } }
+export interface SetKeywordAction { type: ActionTypes.SET_KEYWORD, payload: { keyword: string } }
+export interface SortCountriesAction { type: ActionTypes.SORT_COUNTRIES, payload: { rule: string } }
+export interface SetInputCountryAction { type: ActionTypes.SET_INPUT_COUNTRY, payload: { inputCountry: string } }
+export interface SetInputCapAction { type: ActionTypes.SET_INPUT_CAPITAL, payload: { inputCapital: string } }
+export interface SetInputRegionAction { type: ActionTypes.SET_INPUT_REGION, payload: { inputRegion: string } }
+export interface SetInputAlphaAction { type: ActionTypes.SET_INPUT_ALPHA2, payload: { inputAlpha2: string } }
+export interface SetInputCallAction { type: ActionTypes.SET_INPUT_CALLINGCODES, payload: { inputCallingCodes: string } }
+export interface AddCountryNumberAction { type: ActionTypes.ADD_COUNTRY_NUMBER, payload: { } }
 
 /*
  * Define actions creators
@@ -49,21 +47,14 @@ export function requestCountries(): RequestCountriesAction {
     type: ActionTypes.REQUEST_COUNTRIES,
     payload: {}
   };
-};
+}
 
 export function getCountries(countries: Array<Country>): GetCountriesAction {
   return { 
     type: ActionTypes.GET_COUNTRIES,
     payload: { countries }
   };
-};
-
-// export function setCountries(countries: Array<Country>): SetCountriesAction {
-//   return { 
-//     type: ActionTypes.SET_COUNTRIES,
-//     payload: { countries }
-//   };
-// };
+}
 
 export function addCountry(): AddCountryAction {
 
@@ -71,7 +62,7 @@ export function addCountry(): AddCountryAction {
     type: ActionTypes.ADD_COUNTRY,
     payload: { }
   };
-};
+}
 
 export function delCountry(alpha2Code: string): DelCountryAction {
 
@@ -79,7 +70,7 @@ export function delCountry(alpha2Code: string): DelCountryAction {
     type: ActionTypes.DEL_COUNTRY,
     payload: { alpha2Code }
   };
-};
+}
 
 export function searchCountries(): SearchCountriesAction {
 
@@ -87,7 +78,7 @@ export function searchCountries(): SearchCountriesAction {
     type: ActionTypes.SEARCH_COUNTRIES,
     payload: { }
   };
-};
+}
 
 export function setKeyword(keyword: string): SetKeywordAction {
 
@@ -95,7 +86,7 @@ export function setKeyword(keyword: string): SetKeywordAction {
     type: ActionTypes.SET_KEYWORD,
     payload: { keyword }
   };
-};
+}
 
 export function sortCountries(rule: string): SortCountriesAction {
 
@@ -103,7 +94,7 @@ export function sortCountries(rule: string): SortCountriesAction {
     type: ActionTypes.SORT_COUNTRIES,
     payload: { rule }
   };
-};
+}
 
 export function setInputCountry( inputCountry: string ): SetInputCountryAction {
 
@@ -111,7 +102,7 @@ export function setInputCountry( inputCountry: string ): SetInputCountryAction {
     type: ActionTypes.SET_INPUT_COUNTRY,
     payload: { inputCountry }
   };
-};
+}
 
 export function setInputCapital( inputCapital: string ): SetInputCapAction {
 
@@ -119,7 +110,7 @@ export function setInputCapital( inputCapital: string ): SetInputCapAction {
     type: ActionTypes.SET_INPUT_CAPITAL,
     payload: { inputCapital }
   };
-};
+}
 
 export function setInputRegion( inputRegion: string ): SetInputRegionAction {
 
@@ -127,7 +118,7 @@ export function setInputRegion( inputRegion: string ): SetInputRegionAction {
     type: ActionTypes.SET_INPUT_REGION,
     payload: { inputRegion }
   };
-};
+}
 
 export function setInputAlpha2( inputAlpha2: string ): SetInputAlphaAction {
 
@@ -135,7 +126,7 @@ export function setInputAlpha2( inputAlpha2: string ): SetInputAlphaAction {
     type: ActionTypes.SET_INPUT_ALPHA2,
     payload: { inputAlpha2 }
   };
-};
+}
 
 export function setInputCallingCode( inputCallingCodes: string ): SetInputCallAction {
 
@@ -143,7 +134,7 @@ export function setInputCallingCode( inputCallingCodes: string ): SetInputCallAc
     type: ActionTypes.SET_INPUT_CALLINGCODES,
     payload: { inputCallingCodes }
   };
-};
+}
 
 export function addCountryNumber( ): AddCountryNumberAction {
 
@@ -151,7 +142,7 @@ export function addCountryNumber( ): AddCountryNumberAction {
     type: ActionTypes.ADD_COUNTRY_NUMBER,
     payload: { }
   };
-};
+}
 
 export const fetchData = () => dispatch => {
   dispatch(requestCountries());
@@ -210,12 +201,6 @@ export const inputCallCall = (inputCallingCodes: string) => dispatch => {
 export const addNumberCall = () => dispatch => {
   dispatch(addCountryNumber());
 };
-
-
-// export const setCountriesCall = (countries: Array<Country>) => dispatch => {
-//   dispatch(setCountries(countries));
-// };
-
 
 /*
  * Define the Action type

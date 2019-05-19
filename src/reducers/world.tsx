@@ -22,7 +22,7 @@ export interface State {
     redRegion: string;
     redAlpha2: string;
     redCallingCodes: string;
-};
+}
 
 // Define initialState
 export const initialState: State = {
@@ -73,7 +73,6 @@ function compare(origA, origB, a, b, rule, direction) {
         } else {
             return compare(origA, origB, origA.name, origB.name, 'name', direction);
         }
-        return 0;
     }
 }
 
@@ -210,7 +209,6 @@ export function reducer(state: State = initialState, action: Action) {
 
         case ActionTypes.ADD_COUNTRY: {
             let addOpen = true;
-            const colorRed = false;
             const countries: Country[] = state.countries.slice();
             const foundCountries: Country[] = state.foundCountries.slice();
             let inputCountry = state.inputCountry;

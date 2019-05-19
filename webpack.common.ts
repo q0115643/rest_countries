@@ -1,5 +1,6 @@
 import * as webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 
 const isProd = (mode: string): boolean => {
@@ -80,6 +81,9 @@ function buildConfig(mode: string, options: any): webpack.Configuration {
             new HtmlWebpackPlugin({
                 template: `${__dirname}/public/index.html`,
             }),
+            new CopyWebpackPlugin([{
+                from: `${__dirname}/public/favicon`, to: 'favicon',
+            }]),
         ],
 
         node: {
