@@ -26,6 +26,7 @@ https://restcountries.eu/rest/v2/all?fields=alpha2Code;capital;name;region;calli
 - 서치 박스 내에서 엔터 입력 시에도 서치 함수가 실행되도록 추가했습니다.
 - gun svg 아이콘에 lazy-load 적용했던 것을 취소했습니다.
 - scroll을 통한 load에 throttle을 적용했습니다.
+- React.lazy와 Dynamic import를 통해 Code Splitting을 적용했습니다.
 - https://naranara.net 의 주소로 접속하실 수 있습니다.
 
 ## 스펙
