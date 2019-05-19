@@ -43,10 +43,6 @@ class List extends React.Component<Props, {}> {
         }
     };
 
-    componentWillMount() {
-        window.addEventListener('scroll', this.handleScroll);
-    }
-
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
     }
@@ -56,6 +52,7 @@ class List extends React.Component<Props, {}> {
     }
 
     componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll);
         this.props.requestWorld();
     }
 
