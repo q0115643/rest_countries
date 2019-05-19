@@ -6,8 +6,8 @@
   "scripts": {
     "tc": "tsc --noEmit",
     "tc:watch": "npm run type-check -- --watch",
-    "lint": "eslint '*.ts' './src/**/*.tsx'",
-    "lint:fix": "eslint '*.ts' './src/**/*.tsx' --fix",
+    "lint": "eslint '*.ts' './src/**/*.tsx' './src/**/*.ts'",
+    "lint:fix": "eslint '*.ts' './src/**/*.tsx' './src/**/*.ts' --fix",
     "build": "webpack --config webpack.prod.ts",
     "start": "webpack-dev-server --open --config webpack.dev.ts",
     "deploy": "aws s3 sync ./dist s3://naranara-buck --profile=naranara",
