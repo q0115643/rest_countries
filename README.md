@@ -33,12 +33,12 @@ https://restcountries.eu/rest/v2/all?fields=alpha2Code;capital;name;region;calli
 - babel-loader (able to load typescript without ts-loader)
 - webpack 4
 - typescript
-- yaml-loader
-- sass-loader
+- eslint
 - redux
 - redux-thunk
 - redux-logger
 - reselect
-- debounce.lodash
-- throttle.lodash
+- lodash.debounce
+- lodash.throttle
+- sass-loader
 - ...
