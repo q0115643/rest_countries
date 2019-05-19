@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import SVG from 'react-inlinesvg';
 import {FaEnvelope} from 'react-icons/fa';
 import site from 'config.yml';
@@ -6,7 +6,7 @@ import blog from 'assets/blog.svg';
 import github from 'assets/github.svg';
 
 
-export const Footer: React.FC<{}> = () => {
+const Footer: React.FC<{}> = () => {
     return (
         <div className="footer-wrap main-pad">
             <div className="footer">
@@ -38,3 +38,5 @@ export const Footer: React.FC<{}> = () => {
         </div>
     );
 };
+
+export default Footer;

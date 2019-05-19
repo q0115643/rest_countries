@@ -12,7 +12,7 @@ interface Props {
     searchWorld: () => void;
     addCountryStart: () => void;
     setKeyword: (string) => void;
-};
+}
 
 interface SearchState {
     label: string;

@@ -1,18 +1,21 @@
-import * as React from 'react';
+import React, {Suspense, lazy} from 'react';
 import {Route, Switch} from 'react-router-dom';
 import {Helmet} from 'react-helmet';
-import {About, Page404, Header, Footer} from 'components';
-import Home from 'components/Home';
 import isTouchDevice from 'is-touch-device';
 import '../styles/main.scss';
 import site from 'config.yml';
+import Header from 'components/Header';
+import Footer from 'components/Footer';
+const Home = lazy(() => import('components/Home'));
+const About = lazy(() => import('components/About'));
+const Page404 = lazy(() => import('components/Page404'));
 
 
 interface State {
     touch: boolean;
 }
 
-export class App extends React.Component<{}, State> {
+class App extends React.Component<{}, State> {
     state: State = {
         touch: isTouchDevice(),
     };
@@ -30,11 +33,13 @@ export class App extends React.Component<{}, State> {
                 <div className="site">
                     <Header/>
                     <main className="site-content">
-                        <Switch>
-                            <Route exact path="/" component={ Home }/>
-                            <Route path="/about" component={ About }/>
-                            <Route component={ Page404 } />
-                        </Switch>
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <Switch>
+                                <Route exact path="/" component={ Home }/>
+                                <Route path="/about" component={ About }/>
+                                <Route component={ Page404 } />
+                            </Switch>
+                        </Suspense>
                     </main>
                     <Footer/>
                 </div>
@@ -42,3 +47,5 @@ export class App extends React.Component<{}, State> {
         );
     }
 }
+
+export default App;

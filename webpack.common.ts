@@ -1,4 +1,4 @@
-import * as webpack from 'webpack';
+import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
@@ -14,6 +14,7 @@ function buildConfig(mode: string, options: any): webpack.Configuration {
         entry: './src/index.tsx',
         output: {
             filename: 'bundle.js',
+            chunkFilename: '[name].bundle.js',
             path: `${__dirname}/dist`,
             publicPath: '/',
         },

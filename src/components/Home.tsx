@@ -1,15 +1,15 @@
-import * as React from 'react';
-import List from 'components/List';
-import Search from 'components/Search';
-import Add from 'components/Add';
+import React, {lazy, Suspense} from 'react';
 import {connect} from 'react-redux';
 import {State} from 'reducers';
 import {getAddOpen} from 'selectors';
+const Add = lazy(() => import('components/Add'));
+const List = lazy(() => import('components/List'));
+const Search = lazy(() => import('components/Search'));
 
 
 interface Props {
     addInputForm: boolean;
-};
+}
 
 class Home extends React.Component<Props, {}> {
     render() {
@@ -25,9 +25,11 @@ class Home extends React.Component<Props, {}> {
                     </div>
                 </div>
                 <div className="main main-pad">
-                    {this.props.addInputForm ? <Add/> : ''}
-                    <Search/>
-                    <List/>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        {this.props.addInputForm ? <Add/> : ''}
+                        <Search/>
+                        <List/>
+                    </Suspense>
                 </div>
             </div>
         );

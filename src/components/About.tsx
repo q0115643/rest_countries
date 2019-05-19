@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import site from 'config.yml';
 
 
-export class About extends React.Component<{}> {
+class About extends React.Component<{}> {
     render() {
         return (
             <div className="about-wrap main-pad">
@@ -16,3 +16,5 @@ export class About extends React.Component<{}> {
         );
     }
 }
+
+export default About;

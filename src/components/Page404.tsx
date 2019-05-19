@@ -1,6 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 
 
-export const Page404: React.FC<{}> = () => (
+const Page404: React.FC<{}> = () => (
     <h1> 404 </h1>
 );
+
+export default Page404;
