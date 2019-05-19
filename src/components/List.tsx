@@ -15,7 +15,7 @@ interface Props {
     countries: Country[];
     isFetching: boolean;
     requestWorld: () => void;
-    deleteContry: (string) => void;
+    deleteCountry: (string) => void;
     addNumberByScroll: () => void;
 }
 
@@ -48,7 +48,7 @@ class List extends React.Component<Props, {}> {
     }
 
     removeCountry(alpha2Code: string) {
-        this.props.deleteContry(alpha2Code);
+        this.props.deleteCountry(alpha2Code);
     }
 
     componentDidMount() {
@@ -123,7 +123,7 @@ const mapStateToProps = (state: State) => ({
 
 const mapDispatchToProps = {
     requestWorld: fetchData,
-    deleteContry: deleteCountryCall,
+    deleteCountry: deleteCountryCall,
     addNumberByScroll: addNumberCall,
 };
 
