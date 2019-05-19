@@ -1,6 +1,6 @@
-import React, {Suspense, lazy} from 'react';
-import {Route, Switch} from 'react-router-dom';
-import {Helmet} from 'react-helmet';
+import React, { Suspense, lazy } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import isTouchDevice from 'is-touch-device';
 import '../styles/main.scss';
 import site from 'config.yml';
@@ -22,7 +22,7 @@ class App extends React.Component<{}, State> {
 
     render() {
         return (
-            <div className="app" data-is-touch={this.state.touch}>
+            <div className="app" data-is-touch={ this.state.touch }>
                 <Helmet>
                     <title>{ site.title }</title>
                     <meta
@@ -33,7 +33,7 @@ class App extends React.Component<{}, State> {
                 <div className="site">
                     <Header/>
                     <main className="site-content">
-                        <Suspense fallback={<div>Loading...</div>}>
+                        <Suspense fallback={ <div>Loading...</div> }>
                             <Switch>
                                 <Route exact path="/" component={ Home }/>
                                 <Route path="/about" component={ About }/>

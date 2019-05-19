@@ -1,13 +1,13 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {State} from 'reducers';
-import {getInputCountry, getInputCapital,
+import { connect } from 'react-redux';
+import { State } from 'reducers';
+import { getInputCountry, getInputCapital,
     getInputRegion, getInputAlpha2,
     getInputCallingCodes, getRedCountry,
     getRedCapital, getRedRegion,
-    getRedAlpha2, getRedCallingCodes} from 'selectors';
-import {inputCountryCall, inputCapitalCall,
-    inputRegionCall, inputAlphaCall, inputCallCall} from 'actions';
+    getRedAlpha2, getRedCallingCodes } from 'selectors';
+import { inputCountryCall, inputCapitalCall,
+    inputRegionCall, inputAlphaCall, inputCallCall } from 'actions';
 
 
 interface Props {

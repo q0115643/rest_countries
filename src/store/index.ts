@@ -1,6 +1,6 @@
 import logger from 'redux-logger';
-import {createStore, applyMiddleware} from 'redux';
-import {State, reducer, initialState} from 'reducers';
+import { createStore, applyMiddleware } from 'redux';
+import { State, reducer, initialState } from 'reducers';
 import ReduxThunk from 'redux-thunk';
 
 

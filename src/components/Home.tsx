@@ -1,7 +1,7 @@
-import React, {lazy, Suspense} from 'react';
-import {connect} from 'react-redux';
-import {State} from 'reducers';
-import {getAddOpen} from 'selectors';
+import React, { lazy, Suspense } from 'react';
+import { connect } from 'react-redux';
+import { State } from 'reducers';
+import { getAddOpen } from 'selectors';
 const Add = lazy(() => import('components/Add'));
 const List = lazy(() => import('components/List'));
 const Search = lazy(() => import('components/Search'));
@@ -25,8 +25,8 @@ class Home extends React.Component<Props, {}> {
                     </div>
                 </div>
                 <div className="main main-pad">
-                    <Suspense fallback={<div>Loading...</div>}>
-                        {this.props.addInputForm ? <Add/> : ''}
+                    <Suspense fallback={ <div>Loading...</div> }>
+                        { this.props.addInputForm ? <Add/> : '' }
                         <Search/>
                         <List/>
                     </Suspense>

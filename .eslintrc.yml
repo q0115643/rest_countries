@@ -23,6 +23,7 @@ rules:
   prefer-const: 1
   no-unused-vars: 1
   require-jsdoc: 0
+  object-curly-spacing: 0
   '@typescript-eslint/no-explicit-any': 0
   '@typescript-eslint/explicit-function-return-type': 0
   '@typescript-eslint/explicit-member-accessibility': 0

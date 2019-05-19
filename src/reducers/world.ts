@@ -1,5 +1,5 @@
 import Country from 'models/country';
-import {ActionTypes, Action} from 'actions/index';
+import { ActionTypes, Action } from 'actions/index';
 
 // Define State interface for the current reducer
 export interface State {
@@ -114,14 +114,6 @@ export function reducer(state: State = initialState, action: Action) {
                 redCallingCodes: '',
             };
         }
-
-        // case ActionTypes.SET_COUNTRIES: {
-
-        //   return {
-        //     ...state,
-        //     countries: action.payload.countries
-        //   }
-        // }
 
         case ActionTypes.DEL_COUNTRY: {
             const alpha2Code = action.payload.alpha2Code.toUpperCase();

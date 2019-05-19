@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {FaRegFlag} from 'react-icons/fa';
-import {connect} from 'react-redux';
-import {sortCountriesCall, fetchData} from 'actions';
-import {State} from 'reducers';
-import {getRule, getDirection, getIsFetching} from 'selectors';
+import { FaRegFlag } from 'react-icons/fa';
+import { connect } from 'react-redux';
+import { sortCountriesCall, fetchData } from 'actions';
+import { State } from 'reducers';
+import { getRule, getDirection, getIsFetching } from 'selectors';
 
 
 interface Props {
@@ -164,7 +164,7 @@ class Buttons extends React.Component<Props, ButtonState> {
     render() {
         return (
             <div className="buttons-wrap">
-                <div className="reset-wrap" onClick={this.resetClick}>
+                <div className="reset-wrap" onClick={ this.resetClick }>
                     <div className="flag-icon-wrap">
                         <FaRegFlag className="icon flag"/>
                     </div>
@@ -181,8 +181,8 @@ class Buttons extends React.Component<Props, ButtonState> {
                                 type="button"
                                 name="react-tips"
                                 value="country"
-                                onClick={this.sortByNameClick}
-                                className={this.state.country}
+                                onClick={ this.sortByNameClick }
+                                className={ this.state.country }
                             />
                             <span className="country">
                                 country
@@ -195,8 +195,8 @@ class Buttons extends React.Component<Props, ButtonState> {
                                 type="button"
                                 name="react-tips"
                                 value="cap."
-                                onClick={this.sortByCapClick}
-                                className={this.state.capital}
+                                onClick={ this.sortByCapClick }
+                                className={ this.state.capital }
                             />
                             <span className="capital">
                                 cap.
@@ -209,8 +209,8 @@ class Buttons extends React.Component<Props, ButtonState> {
                                 type="button"
                                 name="react-tips"
                                 value="region"
-                                onClick={this.sortByRegClick}
-                                className={this.state.region}
+                                onClick={ this.sortByRegClick }
+                                className={ this.state.region }
                             />
                             <span className="region">
                                 region
@@ -223,8 +223,8 @@ class Buttons extends React.Component<Props, ButtonState> {
                                 type="button"
                                 name="react-tips"
                                 value="alpha-2"
-                                onClick={this.sortByAlphaClick}
-                                className={this.state.alpha2}
+                                onClick={ this.sortByAlphaClick }
+                                className={ this.state.alpha2 }
                             />
                             <span className="alpha">
                                 alpha-2
@@ -237,8 +237,8 @@ class Buttons extends React.Component<Props, ButtonState> {
                                 type="button"
                                 name="react-tips"
                                 value="call"
-                                onClick={this.sortByCallClick}
-                                className={this.state.call}
+                                onClick={ this.sortByCallClick }
+                                className={ this.state.call }
                             />
                             <span className="call">
                                 call

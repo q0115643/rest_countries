@@ -1,8 +1,8 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {fetchData, deleteCountryCall, addNumberCall} from 'actions';
-import {State} from 'reducers';
-import {getVisibleCountries, getIsFetching} from 'selectors';
+import { connect } from 'react-redux';
+import { fetchData, deleteCountryCall, addNumberCall } from 'actions';
+import { State } from 'reducers';
+import { getVisibleCountries, getIsFetching } from 'selectors';
 import Country from 'models/country';
 import Buttons from 'components/Buttons';
 import SVG from 'react-inlinesvg';
@@ -70,27 +70,27 @@ class List extends React.Component<Props, {}> {
                     <div className="fields">
                         <div className="name field">
                             <span>
-                                {country.name || 'Not Found'}
+                                { country.name || 'Not Found' }
                             </span>
                         </div>
                         <div className="capital field">
                             <span>
-                                {country.capital || 'Not Found'}
+                                { country.capital || 'Not Found' }
                             </span>
                         </div>
                         <div className="region field">
                             <span>
-                                {country.region || 'Not Found'}
+                                { country.region || 'Not Found' }
                             </span>
                         </div>
                         <div className="alpha2Code field">
                             <span>
-                                {country.alpha2Code || 'Not Found'}
+                                { country.alpha2Code || 'Not Found' }
                             </span>
                         </div>
                         <div className="callingCodes field">
                             <span>
-                                {country.callingCodes[0] || 'Not Found'}
+                                { country.callingCodes[0] || 'Not Found' }
                             </span>
                         </div>
                         <div className="delete field">
@@ -109,7 +109,7 @@ class List extends React.Component<Props, {}> {
             <div className="list-wrapper">
                 <Buttons/>
                 <ul className="country-list">
-                    {this.renderCountries()}
+                    { this.renderCountries() }
                 </ul>
             </div>
         );
