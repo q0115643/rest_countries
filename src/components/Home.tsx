@@ -2,10 +2,10 @@ import React, { lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { State } from 'reducers';
 import { getAddOpen } from 'selectors';
-
-const Add = lazy(() => import('components/Add'));
-const List = lazy(() => import('components/List'));
-const Search = lazy(() => import('components/Search'));
+declare const importName: any;
+const Add = lazy(() => importName('components/Add', 'Add'));
+const List = lazy(() => importName('components/List', 'List'));
+const Search = lazy(() => importName('components/Search', 'Search'));
 
 
 interface Props {

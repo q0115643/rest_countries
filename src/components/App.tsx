@@ -6,10 +6,10 @@ import '../styles/main.scss';
 import site from 'config.yml';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-
-const Home = lazy(() => import('components/Home'));
-const About = lazy(() => import('components/About'));
-const Page404 = lazy(() => import('components/Page404'));
+declare const importName: any;
+const Home = lazy(() => importName('components/Home', 'Home'));
+const About = lazy(() => importName('components/About', 'About'));
+const Page404 = lazy(() => importName('components/Page404', 'Page404'));
 
 
 interface State {

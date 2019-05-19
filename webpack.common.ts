@@ -11,8 +11,8 @@ function buildConfig(mode: string, options: any): webpack.Configuration {
         mode,
         entry: './src/index.tsx',
         output: {
-            filename: 'bundle.js',
-            chunkFilename: '[name].bundle.js',
+            filename: '[name].[chunkhash].js',
+            chunkFilename: '[name].[chunkhash].js',
             path: `${__dirname}/dist`,
             publicPath: '/',
         },
