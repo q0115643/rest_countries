@@ -1,47 +1,40 @@
-import * as webpack from "webpack";
+import * as webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
 
-export function buildConfig(
-    mode: string,
-    options: {
-        publicPath: string,
-    }
-    ) {
-    let config: webpack.Configuration = {
+
+const isProd = (mode: string): boolean => {
+    return mode === 'production';
+};
+
+
+function buildConfig(mode: string, options: any): webpack.Configuration {
+    const config: webpack.Configuration = {
         mode: mode,
-        entry: "./src/index.tsx",
+        entry: './src/index.tsx',
         output: {
-            filename: "bundle.js",
+            filename: 'bundle.js',
             path: `${__dirname}/dist`,
-            publicPath: options.publicPath,
+            publicPath: '/',
         },
-
-        // Enable sourcemaps for debugging webpack's output.
-        devtool: "source-map",
 
         resolve: {
-            // Add '.ts' and '.tsx' as resolvable extensions.
-            extensions: [".ts", ".tsx", ".js", ".json"],
+            extensions: ['.ts', '.tsx', '.js', '.json'],
             modules: [
                 `${__dirname}/src`,
-                "node_modules"
-            ]
+                'node_modules',
+            ],
         },
-        
-        devServer: {historyApiFallback: true,},
 
         module: {
             rules: [
-                // All files with a '.ts' or '.tsx' extension will be handled by 'babel-loader'.
-                { test: /\.(ts|js)x?$/, exclude: /node_modules/, loader: "babel-loader" },
+                {test: /\.(ts|js)x?$/, exclude: /node_modules/, loader: 'babel-loader'},
 
                 {
                     test: /\.ya?ml$/,
                     use: [
-                        { loader: 'json-loader' },
-                        { loader: 'yaml-loader' },
-                        { loader: 'yaml-lint-loader' },
+                        {loader: 'json-loader'},
+                        {loader: 'yaml-loader'},
+                        {loader: 'yaml-lint-loader'},
                     ],
                 },
 
@@ -49,14 +42,14 @@ export function buildConfig(
                     test: /\.scss$/,
                     use: [
                         {
-                            loader: "style-loader"    // creates style nodes from JS strings
+                            loader: 'style-loader', // creates style nodes from JS strings
                         },
                         {
-                            loader: "css-loader"      // translates CSS into CommonJS
+                            loader: 'css-loader', // translates CSS into CommonJS
                         },
                         {
-                            loader: "sass-loader"     // compiles Sass to CSS
-                        }
+                            loader: 'sass-loader', // compiles Sass to CSS
+                        },
                     ],
                 },
 
@@ -67,13 +60,10 @@ export function buildConfig(
                             loader: 'file-loader',
                             options: {
                                 name: 'images/[name]_[hash:7].[ext]',
-                            }
+                            },
                         },
                     ],
                 },
-
-                // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-                { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
             ],
         },
 
@@ -82,20 +72,37 @@ export function buildConfig(
         // This is important because it allows us to avoid bundling all of our
         // dependencies, which allows browsers to cache those libraries between builds.
         externals: {
-            "react": "React",
-            "react-dom": "ReactDOM"
+            'react': 'React',
+            'react-dom': 'ReactDOM',
         },
+
         plugins: [
             new HtmlWebpackPlugin({
-                template: `${__dirname}/public/index.html`
+                template: `${__dirname}/public/index.html`,
             }),
-            new CopyWebpackPlugin([
-              { from: `${__dirname}/public/favicon`, to: 'favicon' }
-            ]),
         ],
+
         node: {
-          fs: 'empty'
-        }
+            fs: 'empty',
+        },
     };
+
+    if (isProd(mode)) {
+        config.devtool = false;
+    } else {
+        config.devtool = options.devtool;
+        config.devServer = {
+            historyApiFallback: true,
+            disableHostCheck: true,
+            host: options.devServer.host,
+            port: options.devServer.port,
+        };
+        config.module.rules =
+            (config.module.rules || []).concat(options.rules || []);
+    }
+
     return config;
-};
+}
+
+
+export default buildConfig;

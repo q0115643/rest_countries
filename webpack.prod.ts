@@ -1,7 +1,6 @@
-import { buildConfig } from './webpack.common'
+import buildConfig from './webpack.common';
 
-let config = buildConfig('production', {
-  publicPath: 'https://naranara.net/',
+const config = buildConfig('production', {
 });
 
 export default config;

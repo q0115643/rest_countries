@@ -1,22 +1,22 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { fetchData, deleteCountryCall, addNumberCall } from 'actions';
-import { State } from 'reducers';
-import { getVisibleCountries, getIsFetching } from 'selectors';
+import {connect} from 'react-redux';
+import {fetchData, deleteCountryCall, addNumberCall} from 'actions';
+import {State} from 'reducers';
+import {getVisibleCountries, getIsFetching} from 'selectors';
 import Country from 'models/country';
 import Buttons from 'components/Buttons';
 import SVG from 'react-inlinesvg';
 import LazyLoad from 'react-lazyload';
-import throttle from 'lodash.throttle'
+import throttle from 'lodash.throttle';
 import gun from 'assets/gun.svg';
 
 
 interface Props {
-  countries: Array<Country>,
-  isFetching: boolean,
-  requestWorld: () => void,
-  deleteContry: (string) => void,
-  addNumberByScroll: () => void,
+    countries: Country[];
+    isFetching: boolean;
+    requestWorld: () => void;
+    deleteContry: (string) => void;
+    addNumberByScroll: () => void;
 }
 
 class List extends React.Component<Props, {}> {
@@ -26,19 +26,19 @@ class List extends React.Component<Props, {}> {
         this.removeCountry = this.removeCountry.bind(this);
         this._throttledLoad = throttle(
             this.props.addNumberByScroll
-            , 1000, { trailing: false });
+            , 1000, {trailing: false});
     }
 
     handleScroll = (event) => {
-        const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+        const windowHeight = 'innerHeight' in window ? window.innerHeight : document.documentElement.offsetHeight;
         const body = document.body;
         const html = document.documentElement;
         const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
         const windowBottom = Math.round(windowHeight + window.pageYOffset);
         if (windowBottom >= docHeight) {
             setTimeout(
-            this._throttledLoad
-            , 500);
+                this._throttledLoad
+                , 500);
         }
     }
 
@@ -59,7 +59,7 @@ class List extends React.Component<Props, {}> {
     }
 
     renderCountries() {
-        return this.props.countries.map(country => {
+        return this.props.countries.map((country) => {
             return (
                 <li className="country-wrap" key={country.alpha2Code}>
                     <div className="flag-wrap">
@@ -72,27 +72,27 @@ class List extends React.Component<Props, {}> {
                     <div className="fields">
                         <div className="name field">
                             <span>
-                                {country.name || "Not Found"}
+                                {country.name || 'Not Found'}
                             </span>
                         </div>
                         <div className="capital field">
                             <span>
-                                {country.capital || "Not Found"}
+                                {country.capital || 'Not Found'}
                             </span>
                         </div>
                         <div className="region field">
                             <span>
-                                {country.region || "Not Found"}
+                                {country.region || 'Not Found'}
                             </span>
                         </div>
                         <div className="alpha2Code field">
                             <span>
-                                {country.alpha2Code || "Not Found"}
+                                {country.alpha2Code || 'Not Found'}
                             </span>
                         </div>
                         <div className="callingCodes field">
                             <span>
-                                {country.callingCodes[0] || "Not Found"}
+                                {country.callingCodes[0] || 'Not Found'}
                             </span>
                         </div>
                         <div className="delete field">
@@ -103,7 +103,7 @@ class List extends React.Component<Props, {}> {
                     </div>
                 </li>
             );
-        })
+        });
     }
 
     render() {
@@ -119,14 +119,14 @@ class List extends React.Component<Props, {}> {
 }
 
 const mapStateToProps = (state: State) => ({
-  countries: getVisibleCountries(state),
-  isFetching: getIsFetching(state),
+    countries: getVisibleCountries(state),
+    isFetching: getIsFetching(state),
 });
 
 const mapDispatchToProps = {
-  requestWorld: fetchData,
-  deleteContry: deleteCountryCall,
-  addNumberByScroll: addNumberCall,
-}
+    requestWorld: fetchData,
+    deleteContry: deleteCountryCall,
+    addNumberByScroll: addNumberCall,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(List);

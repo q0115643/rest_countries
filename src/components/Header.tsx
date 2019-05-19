@@ -1,5 +1,5 @@
-import * as React from "react";
-import { NavLink } from 'react-router-dom';
+import * as React from 'react';
+import {NavLink} from 'react-router-dom';
 import site from 'config.yml';
 
 
@@ -20,8 +20,8 @@ export const Header: React.FC<{}> = () => {
             </div>
             <div className="header-right">
                 <NavLink to="/about"
-                className="about-link"
-                activeClassName="about-link-active">
+                    className="about-link"
+                    activeClassName="about-link-active">
                     <span className="about-text">
                         About
                     </span>

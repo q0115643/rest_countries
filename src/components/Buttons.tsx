@@ -1,26 +1,26 @@
 import * as React from 'react';
-import { FaRegFlag } from 'react-icons/fa';
-import { connect } from 'react-redux';
-import { sortCountriesCall, fetchData } from 'actions';
-import { State } from 'reducers';
-import { getRule, getDirection, getIsFetching } from 'selectors';
+import {FaRegFlag} from 'react-icons/fa';
+import {connect} from 'react-redux';
+import {sortCountriesCall, fetchData} from 'actions';
+import {State} from 'reducers';
+import {getRule, getDirection, getIsFetching} from 'selectors';
 
 
 interface Props {
-  rule: string,
-  direction: number,
-  isFetching: boolean,
-  sortWorld: (string) => void,
-  requestWorld: () => void,
+    rule: string;
+    direction: number;
+    isFetching: boolean;
+    sortWorld: (string) => void;
+    requestWorld: () => void;
 }
 
 interface ButtonState {
-  country: string,
-  capital: string,
-  region: string,
-  alpha2: string,
-  call: string,
-  reset: string,
+    country: string;
+    capital: string;
+    region: string;
+    alpha2: string;
+    call: string;
+    reset: string;
 }
 
 class Buttons extends React.Component<Props, ButtonState> {
@@ -28,12 +28,12 @@ class Buttons extends React.Component<Props, ButtonState> {
         super(props);
 
         this.state = {
-            country: "button up",
-            capital: "button",
-            region: "button",
-            alpha2: "button",
-            call: "button",
-            reset: "button"
+            country: 'button up',
+            capital: 'button',
+            region: 'button',
+            alpha2: 'button',
+            call: 'button',
+            reset: 'button',
         };
 
         this.resetClick = this.resetClick.bind(this);
@@ -48,116 +48,115 @@ class Buttons extends React.Component<Props, ButtonState> {
         // reset by re-fetching data
         await this.props.requestWorld();
         this.setState({
-            country: "button up",
-            capital: "button",
-            region: "button",
-            alpha2: "button",
-            call: "button",
+            country: 'button up',
+            capital: 'button',
+            region: 'button',
+            alpha2: 'button',
+            call: 'button',
         });
     }
 
     async sortByNameClick() {
-        await this.props.sortWorld("name");
+        await this.props.sortWorld('name');
         if (this.props.direction === 1) {
             this.setState({
-                country: "button up",
-                capital: "button",
-                region: "button",
-                alpha2: "button",
-                call: "button",
+                country: 'button up',
+                capital: 'button',
+                region: 'button',
+                alpha2: 'button',
+                call: 'button',
             });
         } else {
             this.setState({
-                country: "button down",
-                capital: "button",
-                region: "button",
-                alpha2: "button",
-                call: "button",
+                country: 'button down',
+                capital: 'button',
+                region: 'button',
+                alpha2: 'button',
+                call: 'button',
             });
         }
-
     }
 
     async sortByCapClick() {
-        await this.props.sortWorld("capital");
+        await this.props.sortWorld('capital');
         if (this.props.direction === 1) {
             this.setState({
-                country: "button",
-                capital: "button up",
-                region: "button",
-                alpha2: "button",
-                call: "button",
+                country: 'button',
+                capital: 'button up',
+                region: 'button',
+                alpha2: 'button',
+                call: 'button',
             });
         } else {
             this.setState({
-                country: "button",
-                capital: "button down",
-                region: "button",
-                alpha2: "button",
-                call: "button",
+                country: 'button',
+                capital: 'button down',
+                region: 'button',
+                alpha2: 'button',
+                call: 'button',
             });
         }
     }
 
     async sortByRegClick() {
-        await this.props.sortWorld("region");
+        await this.props.sortWorld('region');
         if (this.props.direction === 1) {
             this.setState({
-                country: "button",
-                capital: "button",
-                region: "button up",
-                alpha2: "button",
-                call: "button",
+                country: 'button',
+                capital: 'button',
+                region: 'button up',
+                alpha2: 'button',
+                call: 'button',
             });
         } else {
             this.setState({
-                country: "button",
-                capital: "button",
-                region: "button down",
-                alpha2: "button",
-                call: "button",
+                country: 'button',
+                capital: 'button',
+                region: 'button down',
+                alpha2: 'button',
+                call: 'button',
             });
         }
     }
 
     async sortByAlphaClick() {
-        await this.props.sortWorld("alpha2");
+        await this.props.sortWorld('alpha2');
         if (this.props.direction === 1) {
             this.setState({
-                country: "button",
-                capital: "button",
-                region: "button",
-                alpha2: "button up",
-                call: "button",
+                country: 'button',
+                capital: 'button',
+                region: 'button',
+                alpha2: 'button up',
+                call: 'button',
             });
         } else {
             this.setState({
-                country: "button",
-                capital: "button",
-                region: "button",
-                alpha2: "button down",
-                call: "button",
+                country: 'button',
+                capital: 'button',
+                region: 'button',
+                alpha2: 'button down',
+                call: 'button',
             });
         }
     }
 
     async sortByCallClick() {
-        await this.props.sortWorld("call");
+        await this.props.sortWorld('call');
         if (this.props.direction === 1) {
             this.setState({
-                country: "button",
-                capital: "button",
-                region: "button",
-                alpha2: "button",
-                call: "button up",
+                country: 'button',
+                capital: 'button',
+                region: 'button',
+                alpha2: 'button',
+                call: 'button up',
             });
         } else {
             this.setState({
-                country: "button",
-                capital: "button",
-                region: "button",
-                alpha2: "button",
-                call: "button down",
+                country: 'button',
+                capital: 'button',
+                region: 'button',
+                alpha2: 'button',
+                call: 'button down',
             });
         }
     }
@@ -258,14 +257,14 @@ class Buttons extends React.Component<Props, ButtonState> {
 }
 
 const mapStateToProps = (state: State) => ({
-  direction: getDirection(state),
-  rule: getRule(state),
-  isFetching: getIsFetching(state),
+    direction: getDirection(state),
+    rule: getRule(state),
+    isFetching: getIsFetching(state),
 });
 
 const mapDispatchToProps = {
-  sortWorld: sortCountriesCall,
-  requestWorld: fetchData
-}
+    sortWorld: sortCountriesCall,
+    requestWorld: fetchData,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Buttons);

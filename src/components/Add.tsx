@@ -1,50 +1,50 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { State } from 'reducers';
-import { getInputCountry, getInputCapital,
+import {connect} from 'react-redux';
+import {State} from 'reducers';
+import {getInputCountry, getInputCapital,
     getInputRegion, getInputAlpha2,
     getInputCallingCodes, getRedCountry,
     getRedCapital, getRedRegion,
-    getRedAlpha2, getRedCallingCodes } from 'selectors';
-import { inputCountryCall, inputCapitalCall,
-    inputRegionCall, inputAlphaCall, inputCallCall } from 'actions';
+    getRedAlpha2, getRedCallingCodes} from 'selectors';
+import {inputCountryCall, inputCapitalCall,
+    inputRegionCall, inputAlphaCall, inputCallCall} from 'actions';
 
 
 interface Props {
-  inputCountry: string,
-  inputCapital: string,
-  inputRegion: string,
-  inputAlpha2: string,
-  inputCallingCodes: string,
-  changeCountryInput: (string) => void,
-  changeCapInput: (string) => void,
-  changeRegionInput: (string) => void,
-  changeAlpha2Input: (string) => void,
-  changeCallInput: (string) => void,
-  redCountry: string,
-  redCapital: string,
-  redRegion: string,
-  redAlpha2: string,
-  redCallingCodes: string,
+    inputCountry: string;
+    inputCapital: string;
+    inputRegion: string;
+    inputAlpha2: string;
+    inputCallingCodes: string;
+    changeCountryInput: (string) => void;
+    changeCapInput: (string) => void;
+    changeRegionInput: (string) => void;
+    changeAlpha2Input: (string) => void;
+    changeCallInput: (string) => void;
+    redCountry: string;
+    redCapital: string;
+    redRegion: string;
+    redAlpha2: string;
+    redCallingCodes: string;
 }
 
 interface BoxState {
-    countrySearchBox: string,
-    capitalSearchBox: string,
-    regionSearchBox: string,
-    alphaSearchBox: string,
-    callSearchBox: string,
+    countrySearchBox: string;
+    capitalSearchBox: string;
+    regionSearchBox: string;
+    alphaSearchBox: string;
+    callSearchBox: string;
 }
 
 class Add extends React.Component<Props, BoxState> {
     constructor(props) {
         super(props);
         this.state= {
-            countrySearchBox: "searchbox",
-            capitalSearchBox: "searchbox",
-            regionSearchBox: "searchbox",
-            alphaSearchBox: "searchbox",
-            callSearchBox: "searchbox",
+            countrySearchBox: 'searchbox',
+            capitalSearchBox: 'searchbox',
+            regionSearchBox: 'searchbox',
+            alphaSearchBox: 'searchbox',
+            callSearchBox: 'searchbox',
         };
         this.changeCountryValue = this.changeCountryValue.bind(this);
         this.changeCapitalValue = this.changeCapitalValue.bind(this);
@@ -85,8 +85,8 @@ class Add extends React.Component<Props, BoxState> {
                             value={this.props.inputCountry}
                             placeholder="country"
                             onChange={this.changeCountryValue}
-                            onFocus={() => this.setState({ countrySearchBox: `searchbox active` })}
-                            onBlur={() => this.setState({ countrySearchBox: `searchbox` })}
+                            onFocus={() => this.setState({countrySearchBox: `searchbox active`})}
+                            onBlur={() => this.setState({countrySearchBox: `searchbox`})}
                         />
                     </div>
                     <div className="input-wrap">
@@ -96,8 +96,8 @@ class Add extends React.Component<Props, BoxState> {
                             value={this.props.inputCapital}
                             placeholder="capital"
                             onChange={this.changeCapitalValue}
-                            onFocus={() => this.setState({ capitalSearchBox: `searchbox active` })}
-                            onBlur={() => this.setState({ capitalSearchBox: `searchbox` })}
+                            onFocus={() => this.setState({capitalSearchBox: `searchbox active`})}
+                            onBlur={() => this.setState({capitalSearchBox: `searchbox`})}
                         />
                     </div>
                     <div className="input-wrap">
@@ -107,8 +107,8 @@ class Add extends React.Component<Props, BoxState> {
                             value={this.props.inputRegion}
                             placeholder="region"
                             onChange={this.changeRegionValue}
-                            onFocus={() => this.setState({ regionSearchBox: `searchbox active` })}
-                            onBlur={() => this.setState({ regionSearchBox: `searchbox` })}
+                            onFocus={() => this.setState({regionSearchBox: `searchbox active`})}
+                            onBlur={() => this.setState({regionSearchBox: `searchbox`})}
                         />
                     </div>
                     <div className="input-wrap">
@@ -118,8 +118,8 @@ class Add extends React.Component<Props, BoxState> {
                             value={this.props.inputAlpha2}
                             placeholder="alpha2"
                             onChange={this.changeAlpha2Value}
-                            onFocus={() => this.setState({ alphaSearchBox: `searchbox active` })}
-                            onBlur={() => this.setState({ alphaSearchBox: `searchbox` })}
+                            onFocus={() => this.setState({alphaSearchBox: `searchbox active`})}
+                            onBlur={() => this.setState({alphaSearchBox: `searchbox`})}
                         />
                     </div>
                     <div className="input-wrap">
@@ -129,8 +129,8 @@ class Add extends React.Component<Props, BoxState> {
                             value={this.props.inputCallingCodes}
                             placeholder="call"
                             onChange={this.changeCallValue}
-                            onFocus={() => this.setState({ callSearchBox: `searchbox active` })}
-                            onBlur={() => this.setState({ callSearchBox: `searchbox` })}
+                            onFocus={() => this.setState({callSearchBox: `searchbox active`})}
+                            onBlur={() => this.setState({callSearchBox: `searchbox`})}
                         />
                     </div>
                 </div>
@@ -158,6 +158,6 @@ const mapDispatchToProps = {
     changeRegionInput: inputRegionCall,
     changeAlpha2Input: inputAlphaCall,
     changeCallInput: inputCallCall,
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Add);

@@ -1,14 +1,14 @@
-import * as React from "react";
-import { Route, Switch } from 'react-router-dom';
-import { Helmet } from "react-helmet";
-import { About, Page404, Header, Footer } from 'components';
+import * as React from 'react';
+import {Route, Switch} from 'react-router-dom';
+import {Helmet} from 'react-helmet';
+import {About, Page404, Header, Footer} from 'components';
 import Home from 'components/Home';
 import isTouchDevice from 'is-touch-device';
 import '../styles/main.scss';
 import site from 'config.yml';
 
 
-type State = {
+interface State {
     touch: boolean;
 }
 

@@ -1,23 +1,23 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { State } from 'reducers';
-import { getKeyword, getAddOpen } from 'selectors';
-import { searchCountriesCall, addOpenCall, setKeywordCall } from 'actions';
-import debounce from 'lodash.debounce'
+import {connect} from 'react-redux';
+import {State} from 'reducers';
+import {getKeyword, getAddOpen} from 'selectors';
+import {searchCountriesCall, addOpenCall, setKeywordCall} from 'actions';
+import debounce from 'lodash.debounce';
 
 
 interface Props {
-  keyword: string,
-  addInputForm: boolean,
-  searchWorld: () => void,
-  addCountryStart: () => void,
-  setKeyword: (string) => void,
+    keyword: string;
+    addInputForm: boolean;
+    searchWorld: () => void;
+    addCountryStart: () => void;
+    setKeyword: (string) => void;
 };
 
 interface SearchState {
-  label: string,
-  searchBox: string,
-  addButton: string,
+    label: string;
+    searchBox: string;
+    addButton: string;
 }
 
 class Search extends React.Component<Props, SearchState> {
@@ -25,9 +25,9 @@ class Search extends React.Component<Props, SearchState> {
     constructor(props) {
         super(props);
         this.state= {
-            label: "search for",
-            searchBox: "searchbox",
-            addButton: "button",
+            label: 'search for',
+            searchBox: 'searchbox',
+            addButton: 'button',
         };
         this.changeValue = this.changeValue.bind(this);
         this.addCountry = this.addCountry.bind(this);
@@ -46,11 +46,11 @@ class Search extends React.Component<Props, SearchState> {
     }
 
     checkKey(e) {
-        if(e.key==='Enter') {
+        if (e.key==='Enter') {
             this.props.searchWorld();
         }
     }
-    
+
     render() {
         return (
             <div className="search-wrap">
@@ -67,8 +67,8 @@ class Search extends React.Component<Props, SearchState> {
                         placeholder={this.state.label}
                         onChange={this.changeValue}
                         onKeyPress={this.checkKey}
-                        onFocus={() => this.setState({ searchBox: "searchbox active" })}
-                        onBlur={() => this.setState({ searchBox: "searchbox" })}
+                        onFocus={() => this.setState({searchBox: 'searchbox active'})}
+                        onBlur={() => this.setState({searchBox: 'searchbox'})}
                     />
                 </div>
             </div>
@@ -77,14 +77,14 @@ class Search extends React.Component<Props, SearchState> {
 }
 
 const mapStateToProps = (state: State) => ({
-  keyword: getKeyword(state),
-  addInputForm: getAddOpen(state),
+    keyword: getKeyword(state),
+    addInputForm: getAddOpen(state),
 });
 
 const mapDispatchToProps = {
-  searchWorld: searchCountriesCall,
-  addCountryStart: addOpenCall,
-  setKeyword: setKeywordCall,
-}
+    searchWorld: searchCountriesCall,
+    addCountryStart: addOpenCall,
+    setKeyword: setKeywordCall,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react';
 import SVG from 'react-inlinesvg';
-import { FaEnvelope } from 'react-icons/fa';
+import {FaEnvelope} from 'react-icons/fa';
 import site from 'config.yml';
 import blog from 'assets/blog.svg';
 import github from 'assets/github.svg';

@@ -2,13 +2,13 @@ import * as React from 'react';
 import List from 'components/List';
 import Search from 'components/Search';
 import Add from 'components/Add';
-import { connect } from 'react-redux';
-import { State } from 'reducers';
-import { getAddOpen } from 'selectors';
+import {connect} from 'react-redux';
+import {State} from 'reducers';
+import {getAddOpen} from 'selectors';
 
 
 interface Props {
-  addInputForm: boolean,
+    addInputForm: boolean;
 };
 
 class Home extends React.Component<Props, {}> {
@@ -35,9 +35,9 @@ class Home extends React.Component<Props, {}> {
 }
 
 const mapStateToProps = (state: State) => ({
-  addInputForm: getAddOpen(state),
+    addInputForm: getAddOpen(state),
 });
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
