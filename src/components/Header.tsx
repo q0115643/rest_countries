@@ -5,7 +5,7 @@ import earth from 'assets/earth.png';
 
 
 const Header: React.FC<{}> = () => (
-    <div className="header-wrap mㄴain-pad">
+    <div className="header-wrap main-pad">
         <div className="header-left">
             <a href="/" className="home-link">
                 <div className="logo-wrap">
